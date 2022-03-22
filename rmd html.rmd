@@ -28,3 +28,26 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#Sample R-Mardown document
+```{r code block 1, results='hide'}
+
+# This is a R-Code chunk
+
+source("Yahoo Stock Data Pull.R")
+AAPL <-  GetYahooData("AAPL")
+IBM <- GetYahooData("IBM")
+# Plotly chart 
+library(plotly)
+mat <-  data.frame(Date = AAPL$Date, 
+                   AAPL = round(AAPL$Adj.Close,2),
+                   IBM = round(IBM$Adj.Close,2))
+p <- mat %>% 
+  plot_ly(x = Date, y = AAPL, fill = "tozeroy", name = "Microsoft") %>% 
+  add_trace(y = IBM, fill = "tonexty", name = "IBM") %>% 
+  layout(title = "Stock Prices", 
+         xaxis = list(title = "Time"),
+         yaxis = list(title = "Stock Prices"))
+p  # Thats it !
+
+```

@@ -395,6 +395,14 @@ chunk like this:</p>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the
 code chunk to prevent printing of the R code that generated the
 plot.</p>
+<p>source(“Yahoo Stock Data Pull.R”) AAPL &lt;- GetYahooData(“AAPL”) IBM
+&lt;- GetYahooData(“IBM”) # Plotly chart library(plotly) mat &lt;-
+data.frame(Date = AAPL<span class="math inline">\(Date,  AAPL =
+round(AAPL\)</span>Adj.Close,2), IBM = round(IBM$Adj.Close,2)) p &lt;-
+mat %&gt;% plot_ly(x = Date, y = AAPL, fill = “tozeroy”, name =
+“Microsoft”) %&gt;% add_trace(y = IBM, fill = “tonexty”, name = “IBM”)
+%&gt;% layout(title = “Stock Prices”, xaxis = list(title = “Time”),
+yaxis = list(title = “Stock Prices”)) p # Thats it !</p>
 </div>
 
 
